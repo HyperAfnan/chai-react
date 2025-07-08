@@ -37,7 +37,7 @@ function InputBox({
           onChange={(e) => onCurrencyChange && onCurrencyChange(e.target.value)}
         >
           {currencyOptions.map((currency) => (
-            <option key={currency} value={currency}>
+            <option aria-selected key={currency} value={currency}>
               {currency}
             </option>
           ))}
