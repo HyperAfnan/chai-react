@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, } from "react";
 
 export const CartContext = createContext({
   cartItems: [],
@@ -8,8 +8,6 @@ export const CartContext = createContext({
   totalItems: 0,
   totalPrice: 0,
 });
-
-export const CartContextProvider = CartContext.Provider;
 
 export const useCartContext = () => {
   return useContext(CartContext);

@@ -1,25 +1,25 @@
 /* eslint-disable no-unused-vars */
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useCartContext } from "../context/CartContext.js";
+import { CartContextProvider } from "../context/CartContextProvider.jsx";
 export default function ProductCard({ _id, name, price, seller }) {
    const image = "https://placehold.co/400";
    price = price + " Rs"
 
-   const [cart, setCart] = useState([]);
-   const addToCart = (data) => setCart((prevItem) => { return [...prevItem, data] })
-   const removeFromCart = (_id) => setCart(cart.filter(item => item._id !== _id ))
-   const clearCart = () => setCart([])
+   const { addToCart , cartItems } = useCartContext();
 
    function onClickHandler(e, data) {
       e.preventDefault()
       addToCart(data)
    }
 
-   useEffect(() => {
-      localStorage.setItem("cart", JSON.stringify(cart))
-   }, [cart])
+   // useEffect(() => {
+   //    localStorage.setItem("cart", JSON.stringify(cartItems))
+   // }, [cartItems])
 
    return (
-      <div className="bg-white rounded-3xl flex justify-center items-center flex-col hover:shadow-2xl w-2xs m-4 " >
+      <CartContextProvider value={{ addToCart, cartItems }}>
+         <div className="bg-white rounded-3xl flex justify-center items-center flex-col hover:shadow-2xl w-2xs m-4 " >
          <div className="p-8">
             <img src={image} height="50px" width="50px" alt="product image" />
          </div>
@@ -39,6 +39,7 @@ export default function ProductCard({ _id, name, price, seller }) {
                </button>
             </div>
          </div>
-      </div>
+         </div>
+      </CartContextProvider>
    );
 }

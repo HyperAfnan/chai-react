@@ -1,30 +1,12 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import { createBrowserRouter , RouterProvider } from "react-router-dom"
-import Layout from "./components/Layout.jsx"
-import ProductList from "./components/ProductList.jsx"
-import Cart from "./components/Cart.jsx"
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "./index.css";
+import { CartContextProvider } from "./context/CartContextProvider";
 
-const router = createBrowserRouter([ 
-   {
-      path: "/",
-      element: <Layout />,
-      children: [
-         {
-            index: true,
-            element: <ProductList/> 
-         },
-         {
-            path: "cart",
-            element: <Cart /> 
-         }
-      ]
-   }
-])
-
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-      <RouterProvider router={router} />
-  </StrictMode>,
-)
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <CartContextProvider>
+    <App />
+  </CartContextProvider>
+);
