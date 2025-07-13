@@ -1,16 +1,14 @@
-// import { products } from "../data/products.js"
+import { products } from "../data/products.js"
 import ProductCard from "./ProductCard.jsx"
-
 
 const ProductList = () => {
    return (
-      <div className="bg-red-300">
-         {/* {products.map((product) => (
+      <div className="bg-red-300 overflow-x-hidden w-full grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-5 place-items-center">
+         {products.map((product) => (
             <div className="" key={product.image}>
-               {product.name}
+               <ProductCard _id={product._id} name={product.name} price={product.price} image="image link" seller={product.sellerName}/>
             </div>
-         ))} */}
-         <ProductCard name="name" price="price" image="image link" seller="seller" />
+         ))}
       </div>
    )
 }
