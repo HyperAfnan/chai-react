@@ -1,13 +1,18 @@
+// import { useEffect } from "react";
 import { useCartContext } from "../context/CartContext.js";
-import { CartContextProvider } from "../context/CartContextProvider.jsx";
 import CartCard from "./CartCard.jsx";
 
 const Cart = () => {
-  const { cartItems , removeFromCart } = useCartContext() || [];
+  const { cartItems, clearCart } = useCartContext() || [];
+  // const onclickHandler = (e) => {
+  //     e.preventDefault(); 
+  //     clearCart()
+  //  }
+
   return (
-    <CartContextProvider value={{cartItems, removeFromCart }}>
+    <div >
       {cartItems.map((product) => (
-        <div key={product._id}>
+        <div className="flex justify-center" key={Math.random()}>
           <CartCard
             _id={product._id}
             name={product.name}
@@ -16,7 +21,10 @@ const Cart = () => {
           />
         </div>
       ))}
-    </CartContextProvider>
+      {/* <div className="bg-blue-500 flex justify-center items-center bottom-0 absolute w-full h-15"> */}
+      {/*   <button type="button" onClick={e => onclickHandler(e)}> Proceed To Buy</button> */}
+      {/* </div> */}
+    </div>
   );
 };
 
