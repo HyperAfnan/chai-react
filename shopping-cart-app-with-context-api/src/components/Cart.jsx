@@ -1,9 +1,8 @@
-// import { useEffect } from "react";
 import { useCartContext } from "../context/CartContext.js";
 import CartCard from "./CartCard.jsx";
 
 const Cart = () => {
-  const { cartItems, clearCart } = useCartContext() || [];
+  const { cartItems } = useCartContext() || [];
   // const onclickHandler = (e) => {
   //     e.preventDefault(); 
   //     clearCart()
@@ -22,7 +21,7 @@ const Cart = () => {
         </div>
       ))}
       {/* <div className="bg-blue-500 flex justify-center items-center bottom-0 absolute w-full h-15"> */}
-      {/*   <button type="button" onClick={e => onclickHandler(e)}> Proceed To Buy</button> */}
+      {/*   <button type="button" onClick={e => onclickHandler(e)}> Clear Cart</button> */}
       {/* </div> */}
     </div>
   );
